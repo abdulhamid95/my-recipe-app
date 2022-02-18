@@ -55,3 +55,30 @@
     cursor: pointer;
 }
 
+.swiper {
+    direction: ltr;
+}
+
+.swiper-slide {
+    cursor: pointer;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.5);
+    right:10px;
+    padding: 15px;
+    color: var(--ion-color-primary) !important;
+    fill: black !important;
+    stroke: black !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background:  var(--ion-color-primary) !important;
+}
+
