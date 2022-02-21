@@ -13,7 +13,7 @@ const TextEditor = (props) => {
     useEffect(() => {
         handleSend()
         focusEditor()
-    }, [editorState])
+    }, [editorData])
 
     const handleSend = () => {
         props.sendToParent(editorData)
@@ -65,7 +65,7 @@ const TextEditor = (props) => {
     
 
     return (
-        <div onClick={focusEditor} className='RichEditor-root'>
+        <div className='RichEditor-root'>
             <div className='RichEditor-controls'>
                 <BlockStyleControls onToggle={onBlockClick} />
             </div>

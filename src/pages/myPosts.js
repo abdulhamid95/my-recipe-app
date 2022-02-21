@@ -116,59 +116,69 @@ const MyPosts = () => {
             />
             <Header headerTitle="منشوراتي" />
             <IonContent className="ion-padding">
-                {posts.length > 0 
-                ?
-                posts.slice().reverse().map((post) => {
-                    return (
-                    <IonCard key={post.id}>
-                        <IonImg src={post.Post_Images[0].img_uri} />
-                        <IonCardContent>
-                            <IonGrid>
-                                <IonRow className="ion-justify-content-between">
-                                    <IonCardTitle className="post-title" color="primary">{post.title}</IonCardTitle>
-                                    <IonButtons
-                                    onClick={() => {
-                                        present([
-                                            {
-                                                text: "تعديل المنشور",
-                                                handler: () => {
-                                                    history.push(`/my-recipe/my-posts/${post.id}`)
-                                                }
-                                            },
-                                            {
-                                                text: "الانتقال للمنشور",
-                                                handler: () => {
-                                                    history.push(`/my-recipe/all-posts/${post.id}`)
-                                                }
-                                            },
-                                            {
-                                                text: "حذف المنشور",
-                                                handler: () => {
-                                                    setPostId(post.id)
-                                                    setShowAlert(true)
-                                                }
-                                            },
-                                            {
-                                                text: "إلغاء",
-                                                role: "cancel"
-                                            }
-                                        ], 'تفاصيل المنشور')
-                                    }}
-                                    >
-                                        <IonIcon icon={ellipsisVertical} className="post-icon" />
-                                    </IonButtons>
-                                </IonRow>
-                                <IonCardSubtitle className="post-contents">{post.contents}</IonCardSubtitle>
-                            </IonGrid>
-                        </IonCardContent>
-                    </IonCard>
-                    )
-                })
-                :
-                <IonCard className="ion-padding ion-text-center">
-                    <IonCardTitle color="primary">لايوجد منشورات لعرضها</IonCardTitle>
-                </IonCard>
-                }
+                <IonGrid>
+                    <IonRow>
+                    {posts.length > 0 
+                    ?
+                    posts.slice().reverse().map((post) => {
+                        return (
+                        <IonCol size-md="6" size="12"  key={post.id}>
+                            <IonCard>
+                                <IonImg src={post.Post_Images[0].img_uri} className="post-image" />
+                                <IonCardContent>
+                                    <IonGrid>
+                                        <IonRow className="ion-justify-content-between">
+                                            <IonCardTitle className="post-title" color="primary">{post.title}</IonCardTitle>
+                                            <IonButtons
+                                            onClick={() => {
+                                                present([
+                                                    {
+                                                        text: "تعديل المنشور",
+                                                        handler: () => {
+                                                            history.push(`/my-recipe/my-posts/${post.id}`)
+                                                        }
+                                                    },
+                                                    {
+                                                        text: "الانتقال للمنشور",
+                                                        handler: () => {
+                                                            history.push(`/my-recipe/all-posts/${post.id}`)
+                                                        }
+                                                    },
+                                                    {
+                                                        text: "حذف المنشور",
+                                                        handler: () => {
+                                                            setPostId(post.id)
+                                                            setShowAlert(true)
+                                                        }
+                                                    },
+                                                    {
+                                                        text: "إلغاء",
+                                                        role: "cancel"
+                                                    }
+                                                ], 'تفاصيل المنشور')
+                                            }}
+                                            >
+                                                <IonIcon icon={ellipsisVertical} className="post-icon" />
+                                            </IonButtons>
+                                        </IonRow>
+                                        <IonCardSubtitle className="post-contents">{post.contents}</IonCardSubtitle>
+                                    </IonGrid>
+                                </IonCardContent>
+                            </IonCard>
+                        </IonCol>
+
+                        )
+                    })
+                    :
+                    <IonCol size-md="6" offset-md="3">
+                        <IonCard className="ion-padding ion-text-center">
+                            <IonCardTitle color="primary">لايوجد منشورات لعرضها</IonCardTitle>
+                        </IonCard>
+                    </IonCol>
+                    }
+                    </IonRow>
+                </IonGrid>
+
 
             </IonContent>
             </>

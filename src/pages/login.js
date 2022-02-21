@@ -1,7 +1,9 @@
 import { 
     IonAlert,
     IonButton,
+    IonCol,
     IonContent, 
+    IonGrid, 
     IonIcon, 
     IonInput, 
     IonItem, 
@@ -9,7 +11,8 @@ import {
     IonList, 
     IonLoading, 
     IonPage, 
-    IonRouterLink
+    IonRouterLink,
+    IonRow
 } from "@ionic/react";
 import Header from "../components/Header/Header";
 import { logIn } from "ionicons/icons";
@@ -81,21 +84,27 @@ const Login = () => {
             />
             <Header headerTitle="تسجيل الدخول" />
             <IonContent>
-                <IonIcon icon={logIn} className="icon" />
-                <IonList>
-                    <IonItem className="ion-margin-bottom">
-                        <IonLabel position="floating" color="warning">البريد الإلكتروني</IonLabel>
-                        <IonInput value={email} onIonChange={(e) => {setEmail(e.target.value)}} />
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="floating" color="warning">كلمة المرور</IonLabel>
-                        <IonInput type="password" value={password} onIonChange={(e) => {setPassword(e.target.value)}} />
-                    </IonItem>
-                </IonList>
-                <div className="ion-text-center btn">
-                    <IonButton onClick={() => {onSubmit()}}>تسجيل الدخول</IonButton>
-                    <IonRouterLink routerLink="/account/register" className="router-link" color="warning">تسجيل مستخدم</IonRouterLink>
-                </div>
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                        <IonIcon icon={logIn} className="icon" />
+                        <IonList>
+                            <IonItem className="ion-margin-bottom">
+                                <IonLabel position="floating" color="warning">البريد الإلكتروني</IonLabel>
+                                <IonInput value={email} onIonChange={(e) => {setEmail(e.target.value)}} />
+                            </IonItem>
+                            <IonItem>
+                                <IonLabel position="floating" color="warning">كلمة المرور</IonLabel>
+                                <IonInput type="password" value={password} onIonChange={(e) => {setPassword(e.target.value)}} />
+                            </IonItem>
+                        </IonList>
+                        <div className="ion-text-center btn">
+                            <IonButton onClick={() => {onSubmit()}}>تسجيل الدخول</IonButton>
+                            <IonRouterLink routerLink="/account/register" className="router-link" color="warning">تسجيل مستخدم</IonRouterLink>
+                        </div>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonContent>
             </>
             }

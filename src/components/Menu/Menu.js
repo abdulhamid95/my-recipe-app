@@ -13,8 +13,24 @@ const Menu = () => {
     const [showLoading, setShowLoading] = useState(false)
     const [name, setName] = useState()
     const [profileImg, setProfileImg] = useState()
+    const [side, setSide] = useState()
 
     const {jwt, setLoggedIn} = useContext(AuthContext)
+
+    let x = window.matchMedia("(max-width: 992px)")
+
+    useEffect(() => {
+        myFunction(x)
+        x.addListener(myFunction)
+    }, [])
+
+    const myFunction = (x) => {
+        if(x.matches) {
+            setSide("end")
+        } else {
+            setSide("start")
+        }
+    }
 
     const history = useHistory()
 
@@ -48,7 +64,7 @@ const Menu = () => {
     }
 
     return (
-        <IonMenu side="end" contentId="menu">
+        <IonMenu side={side} contentId="menu">
             {showLoading 
             ? 
             <IonLoading isOpen={showLoading} />

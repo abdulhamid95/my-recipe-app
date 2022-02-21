@@ -1,4 +1,4 @@
-import { IonAlert, IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonLoading, IonPage, IonTextarea, IonTitle, IonToast, IonToolbar } from "@ionic/react"
+import { IonAlert, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonList, IonLoading, IonPage, IonRow, IonTextarea, IonTitle, IonToast, IonToolbar } from "@ionic/react"
 import { useContext, useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import TextEditor from "../components/TextEditor/TextEditor";
@@ -103,30 +103,36 @@ const UpdatePost = () => {
             />
             <Header headerTitle="تعديل المنشور" />
             <IonContent className="ion-padding">
-                <IonList>
-                    <IonItem>
-                        <IonLabel position="floating" color="warning">العنوان</IonLabel>
-                        <IonInput value={title} onIonChange={(e) => {setTitle(e.target.value)}} />
-                    </IonItem>
-                    <IonItem className="ion-margin-bottom">
-                        <IonLabel position="floating" color="warning">المكونات</IonLabel>
-                        <IonTextarea value={contents} onIonChange={(e) => {setContents(e.target.value)}} />
-                    </IonItem>
-                    <IonLabel className="ion-margin">خطوات التحضير</IonLabel>
-                    <IonItem lines="none" className="ion-margin-top">
-                        <TextEditor editorState={editor} sendToParent={setSteps} />
-                    </IonItem>
-                    <div className="btn">
-                        <IonButton expand="block" onClick={validator}>تعديل المنشور</IonButton>
-                    </div>
-                </IonList>
-                <IonToast
-                isOpen={showToast}
-                onDidDismiss={() => {setShowToast(false)}}
-                message="يجب عليك إدخال جميع الحقول"
-                duration={1500}
-                color="danger"
-                />
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size-md="7" offset-md="1">
+                            <IonList>
+                                <IonItem>
+                                    <IonLabel position="floating" color="warning">العنوان</IonLabel>
+                                    <IonInput value={title} onIonChange={(e) => {setTitle(e.target.value)}} />
+                                </IonItem>
+                                <IonItem className="ion-margin-bottom">
+                                    <IonLabel position="floating" color="warning">المكونات</IonLabel>
+                                    <IonTextarea value={contents} onIonChange={(e) => {setContents(e.target.value)}} />
+                                </IonItem>
+                                <IonLabel className="ion-margin">خطوات التحضير</IonLabel>
+                                <IonItem lines="none" className="ion-margin-top">
+                                    <TextEditor editorState={editor} sendToParent={setSteps} />
+                                </IonItem>
+                                <div className="btn">
+                                    <IonButton expand="block" onClick={validator}>تعديل المنشور</IonButton>
+                                </div>
+                            </IonList>
+                            <IonToast
+                            isOpen={showToast}
+                            onDidDismiss={() => {setShowToast(false)}}
+                            message="يجب عليك إدخال جميع الحقول"
+                            duration={1500}
+                            color="danger"
+                            />
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonContent>
             </>
             }

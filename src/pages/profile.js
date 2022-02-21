@@ -1,8 +1,11 @@
 import { 
     IonAlert,
+    IonCol,
     IonContent, 
+    IonGrid, 
     IonLoading, 
-    IonPage 
+    IonPage, 
+    IonRow
 } from "@ionic/react";
 import Header from "../components/Header/Header";
 import './styles/profile.css';
@@ -99,8 +102,15 @@ const Profile = () => {
             />
             <Header headerTitle="صفحة المستخدم" />
             <IonContent className="ion-padding">
-                <UserAvatar userImg={userImg} />
-                <UserDetails name={name} email={email} userName={setName} password={setPassword} showAlert={setShowAlert} />
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size-md="6" size-lg="4" offset-md="3" offset-lg="4">
+                            <UserAvatar userImg={userImg} />
+                            <UserDetails name={name} email={email} userName={setName} password={setPassword} showAlert={setShowAlert} />
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+              
             </IonContent>
             </>
         }

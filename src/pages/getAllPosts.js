@@ -76,41 +76,49 @@ const GetAllPosts = () => {
                 <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
-                {posts.length > 0 
-                ?
-                posts.slice().reverse().map((post) => {
-                    return (
-                    <IonCard key={post.id} routerLink={`/my-recipe/all-posts/${post.id}`}>
-                        <IonImg src={post.Post_Images[0].img_uri} />
-                        <IonCardContent>
-                            <IonGrid>
-                                <IonRow>
-                                    <IonAvatar className="post-avatar">
-                                        {post.User.img_uri 
-                                        ? 
-                                        <IonImg src={post.User.img_uri} />
-                                        :
-                                        <IonImg src={avatar} />
-                                        }
-                                    </IonAvatar>
-                                    <IonCol>
-                                        <IonText className="post-user">{post.User.name}</IonText>
-                                        <IonText className="post-moment" color="warning">{moment(post.createdAt).fromNow()}</IonText>
-                                    </IonCol>
-                                </IonRow>
-                                <IonCardTitle className="post-title" color="primary">{post.title}</IonCardTitle>
-                                <IonCardSubtitle className="post-contents">{post.contents}</IonCardSubtitle>
-                            </IonGrid>
-                        </IonCardContent>
-                    </IonCard>
-                    )
-                })
-                :
-                <IonCard className="ion-padding ion-text-center">
-                    <IonCardTitle color="primary">لايوجد منشورات لعرضها</IonCardTitle>
-                </IonCard>
-                }
+                <IonGrid>
+                    <IonRow>
+                    {posts.length > 0 
+                    ?
+                    posts.slice().reverse().map((post) => {
+                        return (
+                            <IonCol size-md="6" size="12" key={post.id}>
+                                <IonCard routerLink={`/my-recipe/all-posts/${post.id}`}>
+                                    <IonImg src={post.Post_Images[0].img_uri} className="post-image" />
+                                    <IonCardContent>
+                                        <IonGrid>
+                                            <IonRow>
+                                                <IonAvatar className="post-avatar">
+                                                    {post.User.img_uri 
+                                                    ? 
+                                                    <IonImg src={post.User.img_uri} />
+                                                    :
+                                                    <IonImg src={avatar} />
+                                                    }
+                                                </IonAvatar>
+                                                <IonCol>
+                                                    <IonText className="post-user">{post.User.name}</IonText>
+                                                    <IonText className="post-moment" color="warning">{moment(post.createdAt).fromNow()}</IonText>
+                                                </IonCol>
+                                            </IonRow>
+                                            <IonCardTitle className="post-title" color="primary">{post.title}</IonCardTitle>
+                                            <IonCardSubtitle className="post-contents">{post.contents}</IonCardSubtitle>
+                                        </IonGrid>
+                                    </IonCardContent>
+                                </IonCard>
+                            </IonCol>
 
+                        )
+                    })
+                    :
+                    <IonCol size-md="6" offset-md="3">
+                        <IonCard className="ion-padding ion-text-center">
+                            <IonCardTitle color="primary">لايوجد منشورات لعرضها</IonCardTitle>
+                        </IonCard>
+                    </IonCol>
+                    }
+                    </IonRow>
+                </IonGrid>
             </IonContent>
             </>
             }

@@ -2,7 +2,9 @@ import {
     IonAlert, 
     IonAvatar, 
     IonButton, 
+    IonCol, 
     IonContent, 
+    IonGrid, 
     IonImg, 
     IonInput, 
     IonItem,
@@ -10,6 +12,7 @@ import {
     IonLoading, 
     IonPage, 
     IonRouterLink, 
+    IonRow, 
     IonText 
 } from "@ionic/react"
 import Header from "../components/Header/Header";
@@ -110,61 +113,66 @@ const Register = () => {
             />
             <Header headerTitle="تسجيل مستخدم جديد" />
             <IonContent>
-                <IonAvatar className="avatar">
-                    <IonImg src={avatar} />
-                </IonAvatar>
-                <Formik
-                    initialValues={{
-                        name: null,
-                        email: null,
-                        password: null
-                    }}
-                    validationSchema={validationSchema}
-                    onSubmit={(values, {resetForm}) => {
-                        onSubmit(values);
-                        resetForm({values: ""})
-                    }}
-                >
-                {
-                    formikProps => (
-                    <form onSubmit={formikProps.handleSubmit}>
-                        <IonItem>
-                            <IonLabel color="warning" position="floating">الاسم</IonLabel>
-                            <IonInput
-                                name="name"
-                                value={formikProps.values.name}
-                                onIonChange={formikProps.handleChange}
-                            />
-                        </IonItem>
-                        <IonText className="error">{formikProps.touched.name && formikProps.errors.name}</IonText>
-                        <IonItem>
-                            <IonLabel color="warning" position="floating">البريد الإلكتروني</IonLabel>
-                            <IonInput
-                                name="email"
-                                value={formikProps.values.email}
-                                onIonChange={formikProps.handleChange}
-                            />
-                        </IonItem>
-                        <IonText className="error">{formikProps.touched.email && formikProps.errors.email}</IonText>
-                        <IonItem>
-                            <IonLabel color="warning" position="floating">كلمة المرور</IonLabel>
-                            <IonInput
-                                name="password"
-                                type="password"
-                                value={formikProps.values.password}
-                                onIonChange={formikProps.handleChange}
-                            />
-                        </IonItem>
-                        <IonText className="error">{formikProps.touched.password && formikProps.errors.password}</IonText>
-                        <div className="ion-text-center btn">
-                            <IonButton type="submit" className="button">إنشاء حساب</IonButton>
-                            <IonRouterLink routerLink="/account/login" className="router-link" color="warning">تسجيل الدخول</IonRouterLink>
-                        </div>
-                    </form>
-                    )
-                }
-                </Formik>
-
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size-md="6" size-lg="4" offset-md="3" offset-lg="4">
+                            <IonAvatar className="avatar">
+                                <IonImg src={avatar} />
+                            </IonAvatar>
+                            <Formik
+                                initialValues={{
+                                    name: null,
+                                    email: null,
+                                    password: null
+                                }}
+                                validationSchema={validationSchema}
+                                onSubmit={(values, {resetForm}) => {
+                                    onSubmit(values);
+                                    resetForm({values: ""})
+                                }}
+                            >
+                            {
+                                formikProps => (
+                                <form onSubmit={formikProps.handleSubmit}>
+                                    <IonItem>
+                                        <IonLabel color="warning" position="floating">الاسم</IonLabel>
+                                        <IonInput
+                                            name="name"
+                                            value={formikProps.values.name}
+                                            onIonChange={formikProps.handleChange}
+                                        />
+                                    </IonItem>
+                                    <IonText className="error">{formikProps.touched.name && formikProps.errors.name}</IonText>
+                                    <IonItem>
+                                        <IonLabel color="warning" position="floating">البريد الإلكتروني</IonLabel>
+                                        <IonInput
+                                            name="email"
+                                            value={formikProps.values.email}
+                                            onIonChange={formikProps.handleChange}
+                                        />
+                                    </IonItem>
+                                    <IonText className="error">{formikProps.touched.email && formikProps.errors.email}</IonText>
+                                    <IonItem>
+                                        <IonLabel color="warning" position="floating">كلمة المرور</IonLabel>
+                                        <IonInput
+                                            name="password"
+                                            type="password"
+                                            value={formikProps.values.password}
+                                            onIonChange={formikProps.handleChange}
+                                        />
+                                    </IonItem>
+                                    <IonText className="error">{formikProps.touched.password && formikProps.errors.password}</IonText>
+                                    <div className="ion-text-center btn">
+                                        <IonButton type="submit" className="button">إنشاء حساب</IonButton>
+                                        <IonRouterLink routerLink="/account/login" className="router-link" color="warning">تسجيل الدخول</IonRouterLink>
+                                    </div>
+                                </form>
+                                )
+                            }
+                            </Formik>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonContent>
             </>
             }

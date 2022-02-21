@@ -1,5 +1,5 @@
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
-import { IonApp, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
+import { IonApp, IonLabel, IonRouterOutlet, IonSplitPane, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Register from './pages/register';
 import Login from './pages/login';
@@ -21,8 +21,12 @@ const App: React.FC = () => (
             <Login />
           </Route>
           <Route path="/my-recipe">
-            <Menu />
-            <AppTabs />
+            <IonSplitPane contentId='menu'>
+              <Menu />
+              <IonRouterOutlet id="menu">
+                <AppTabs />
+              </IonRouterOutlet>
+            </IonSplitPane>
           </Route>
           <Route exact path="/">
             <Redirect to="/my-recipe/all-posts" />

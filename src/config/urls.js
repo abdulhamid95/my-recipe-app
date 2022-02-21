@@ -1,4 +1,4 @@
-export const API_URL = "http://192.168.1.3:4000";
+export const API_URL = process.env.REACT_APP_API_URL;
 
 export const REGISTER_URL = "account/register";
 export const LOGIN_URL = "account/login";
